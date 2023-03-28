@@ -11,7 +11,7 @@ public class FlashcardController : ControllerBase
 {
     private readonly IFlashcardRepo _repo;
 
-    public FlashcardController(FlashcardRepo repo){
+    public FlashcardController(IFlashcardRepo repo){
         this._repo = repo;
     }
 
