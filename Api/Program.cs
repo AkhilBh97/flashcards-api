@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FlashcardContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConn")));
 
+builder.Services.AddSingleton<IFlashcardRepo, FlashcardRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
