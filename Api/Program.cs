@@ -14,6 +14,19 @@ builder.Services.AddDbContext<FlashcardContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConn")));
 
 builder.Services.AddScoped<IFlashcardRepo, FlashcardRepo>();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200", "https://flashcards-ab.azurewebsites.net")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .AllowCredentials();
+        });
+});
+builder.Services.AddMvc().AddControllersAsServices();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -24,7 +37,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 
