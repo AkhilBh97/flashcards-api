@@ -29,11 +29,12 @@ builder.Services.AddMvc().AddControllersAsServices();
 builder.Services.AddControllers();
 
 var app = builder.Build();
+app.UseSwagger();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+    /* app.UseSwagger(); */
     app.UseSwaggerUI();
 }
 
