@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins("http://localhost:4200", "https://flashcards-ab.azurewebsites.net",
-                "https://flashcards-ab.azurewebsites.net")
+                "https://flashcards-ab-ng.azurewebsites.net")
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();
